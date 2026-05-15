@@ -1,20 +1,10 @@
 # First_ai_project
 Health-Agent-ai
 
-#Setting Project
-gcloud config set project health-agent-491301
 
-# ENABLE API
-gcloud services enable \
-  run.googleapis.com \
-  artifactregistry.googleapis.com \
-  cloudbuild.googleapis.com \
-  aiplatform.googleapis.com \
-  compute.googleapis.com
+
   
-# Creating directories
-cd && mkdir health_agent && cd health_agent
-
+\
 #Workspace initialize
 cloudshell open-workspace ~/health_agent
 
@@ -30,24 +20,12 @@ uv venv
 source .venv/bin/activate
 uv pip install -r requirements.txt
 
-#SETTING UP VARIABLES
-PROJECT_ID=health-agent-491301
-PROJECT_NUMBER=452616494009
-
-#CREATING ENV FILE WITH VARIABLES
-cat <<EOF > .env
-PROJECT_ID=$PROJECT_ID
-PROJECT_NUMBER=$PROJECT_NUMBER
-SA_NAME=$SA_NAME
-SERVICE_ACCOUNT=${SA_NAME}@${PROJECT_ID}.iam.gserviceaccount.com
-MODEL="gemini-2.5-flash"
-EOF
 
 #CREATE INIT.PY FILE
 cloudshell edit __init__.py
 from . import agent
 
-#CREATE AGENT.PY
+#CREATE AGENT.PY AND ADDING CODE
 cloudshell edit agent.py
 import os
 import logging
